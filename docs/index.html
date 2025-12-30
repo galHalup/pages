@@ -145,31 +145,69 @@
             font-size: 0.95rem;
         }
 
-        .member-stats {
+        .member-metrics {
             display: flex;
             gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .member-metric {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .member-metric-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .member-metric-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .member-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .member-bullets li {
+            color: #94a3b8;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .member-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #7c3aed;
+            font-size: 1.2rem;
+        }
+
+        .member-topics {
+            display: flex;
             flex-wrap: wrap;
+            gap: 8px;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .member-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .member-stat-number {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-
-        .member-stat-label {
-            font-size: 0.75rem;
-            color: #64748b;
+        .member-topic-chip {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         .team-summary {
@@ -225,18 +263,18 @@
                 <div class="stat-label">Total Slack Messages</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">677</div>
+                <div class="stat-number">913</div>
                 <div class="stat-label">Total Projects</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">7</div>
+                <div class="stat-number">8</div>
                 <div class="stat-label">Team Members</div>
             </div>
         </div>
 
         <div class="team-summary">
             <h2 class="section-title" style="margin-top: 0; padding-left: 0; border-left: none;">Team Overview</h2>
-            <p>The Troubleshooting Team had an outstanding year in 2025, with 0 pull requests authored and 0 reviews completed across 677 major projects. The team demonstrated exceptional collaboration and technical excellence throughout the year.</p>
+            <p>The Troubleshooting Team had an outstanding year in 2025, with 0 pull requests authored and 0 reviews completed across 913 major projects. The team demonstrated exceptional collaboration and technical excellence throughout the year.</p>
         </div>
 
         <h2 class="section-title">Team Members</h2>
@@ -245,138 +283,325 @@
             <a href="galHalup.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">G</div>
-                    <div class="member-name">Gal Halup</div>
-                </div>
-                <div class="member-summary">
-                    Led Join and contributed to Troubleshoot.<br>
-                    Also worked on Asaf and 0+ other contributions.
-                </div>
-                <div class="member-stats">
-                    
-                    
-                    
-                    <div class="member-stat">
-                        <div class="member-stat-number">256</div>
-                        <div class="member-stat-label">Projects</div>
+                    <div>
+                        <div class="member-name">Gal Halup</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">gal@komodor.io</div>
+                        
                     </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">1471</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 1471 meetings focusing on security</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">feature</span>
                     
                 </div>
+                
             </a>
             
             <a href="ronen25.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">R</div>
-                    <div class="member-name">Ronen</div>
-                </div>
-                <div class="member-summary">
-                    Led Troubleshoot and contributed to Join.<br>
-                    Also worked on Company Bi and 0+ other contributions.
-                </div>
-                <div class="member-stats">
-                    
-                    
-                    
-                    <div class="member-stat">
-                        <div class="member-stat-number">86</div>
-                        <div class="member-stat-label">Projects</div>
+                    <div>
+                        <div class="member-name">Ronen</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">ronen@komodor.io</div>
+                        
                     </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">590</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 590 meetings focusing on security</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">feature</span>
                     
                 </div>
+                
             </a>
             
             <a href="michaeldeift.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">M</div>
-                    <div class="member-name">Michael</div>
-                </div>
-                <div class="member-summary">
-                    Led Troubleshoot and contributed to Join.<br>
-                    Also worked on Company Bi and 0+ other contributions.
-                </div>
-                <div class="member-stats">
-                    
-                    
-                    
-                    <div class="member-stat">
-                        <div class="member-stat-number">94</div>
-                        <div class="member-stat-label">Projects</div>
+                    <div>
+                        <div class="member-name">Michael</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">michaeld@komodor.io</div>
+                        
                     </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">572</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 572 meetings focusing on ai</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">feature</span>
                     
                 </div>
+                
+            </a>
+            
+            <a href="chen_kubani.html" class="member-card">
+                <div class="member-header">
+                    <div class="member-avatar">C</div>
+                    <div>
+                        <div class="member-name">Chen Kubani</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">chen.kubani@komodor.io</div>
+                        
+                    </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">2161</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 2161 meetings focusing on security</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">feature</span>
+                    
+                </div>
+                
             </a>
             
             <a href="Noy-Simon.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">N</div>
-                    <div class="member-name">Noy</div>
-                </div>
-                <div class="member-summary">
-                    Led Busy and contributed to Troubleshoot.<br>
-                    Also worked on Join and 0+ other contributions.
-                </div>
-                <div class="member-stats">
-                    
-                    
-                    
-                    <div class="member-stat">
-                        <div class="member-stat-number">110</div>
-                        <div class="member-stat-label">Projects</div>
+                    <div>
+                        <div class="member-name">Noy</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">noya@komodor.io</div>
+                        
                     </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">1286</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 1286 meetings focusing on ai</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">feature</span>
                     
                 </div>
+                
             </a>
             
             <a href="binygal.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">B</div>
-                    <div class="member-name">Binyamin</div>
-                </div>
-                <div class="member-summary">
-                    Led Troubleshoot and contributed to Binyamin.<br>
-                    Also worked on Join and 0+ other contributions.
-                </div>
-                <div class="member-stats">
-                    
-                    
-                    
-                    <div class="member-stat">
-                        <div class="member-stat-number">131</div>
-                        <div class="member-stat-label">Projects</div>
+                    <div>
+                        <div class="member-name">Binyamin</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">binygal</div>
+                        
                     </div>
+                </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">730</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>Attended 730 meetings focusing on ai</li>
+                    
+                    <li>Focused on team collaboration and code quality.</li>
+                    
+                </ul>
+                
+                <div class="member-topics">
+                    
+                    <span class="member-topic-chip">ai</span>
+                    
+                    <span class="member-topic-chip">security</span>
+                    
+                    <span class="member-topic-chip">feature</span>
                     
                 </div>
+                
             </a>
             
             <a href="rannyeli.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">R</div>
-                    <div class="member-name">Ranny</div>
+                    <div>
+                        <div class="member-name">Ranny</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">rannyeli</div>
+                        
+                    </div>
                 </div>
-                <div class="member-summary">
-                    Active contributor throughout the year.<br>
-                    Focused on team collaboration and code quality.
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
                 </div>
-                <div class="member-stats">
+                <ul class="member-bullets">
+                    <li>Active contributor throughout the year.</li>
                     
+                    <li>Focused on team collaboration and code quality.</li>
                     
-                    
-                </div>
+                </ul>
+                
             </a>
             
             <a href="shay-cohen.html" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">S</div>
-                    <div class="member-name">Shay</div>
+                    <div>
+                        <div class="member-name">Shay</div>
+                        
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">shay-cohen</div>
+                        
+                    </div>
                 </div>
-                <div class="member-summary">
-                    Active contributor throughout the year.<br>
-                    Focused on team collaboration and code quality.
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">0</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
                 </div>
-                <div class="member-stats">
+                <ul class="member-bullets">
+                    <li>Active contributor throughout the year.</li>
                     
+                    <li>Focused on team collaboration and code quality.</li>
                     
-                    
-                </div>
+                </ul>
+                
             </a>
             
         </div>

@@ -145,31 +145,69 @@
             font-size: 0.95rem;
         }
 
-        .member-stats {
+        .member-metrics {
             display: flex;
             gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .member-metric {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .member-metric-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .member-metric-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .member-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .member-bullets li {
+            color: #94a3b8;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .member-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #7c3aed;
+            font-size: 1.2rem;
+        }
+
+        .member-topics {
+            display: flex;
             flex-wrap: wrap;
+            gap: 8px;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .member-stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .member-stat-number {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-
-        .member-stat-label {
-            font-size: 0.75rem;
-            color: #64748b;
+        .member-topic-chip {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         .team-summary {
@@ -245,32 +283,40 @@
             <a href="{{ member.filename }}" class="member-card">
                 <div class="member-header">
                     <div class="member-avatar">{{ member.name[0] }}</div>
-                    <div class="member-name">{{ member.name }}</div>
-                </div>
-                <div class="member-summary">
-                    {{ member.summary_line1 }}<br>
-                    {{ member.summary_line2 }}
-                </div>
-                <div class="member-stats">
-                    {% if member.stats.prs_authored > 0 %}
-                    <div class="member-stat">
-                        <div class="member-stat-number">{{ member.stats.prs_authored }}</div>
-                        <div class="member-stat-label">PRs</div>
+                    <div>
+                        <div class="member-name">{{ member.name }}</div>
+                        {% if member.email %}
+                        <div style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">{{ member.email }}</div>
+                        {% endif %}
                     </div>
-                    {% endif %}
-                    {% if member.stats.prs_reviewed > 0 %}
-                    <div class="member-stat">
-                        <div class="member-stat-number">{{ member.stats.prs_reviewed }}</div>
-                        <div class="member-stat-label">Reviews</div>
-                    </div>
-                    {% endif %}
-                    {% if member.stats.projects > 0 %}
-                    <div class="member-stat">
-                        <div class="member-stat-number">{{ member.stats.projects }}</div>
-                        <div class="member-stat-label">Projects</div>
-                    </div>
-                    {% endif %}
                 </div>
+                <div class="member-metrics">
+                    <div class="member-metric">
+                        <div class="member-metric-number">{{ member.stats.calendar_events or 0 }}</div>
+                        <div class="member-metric-label">Meetings</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">{{ member.stats.prs_authored or 0 }}</div>
+                        <div class="member-metric-label">PRs</div>
+                    </div>
+                    <div class="member-metric">
+                        <div class="member-metric-number">{{ member.stats.prs_reviewed or 0 }}</div>
+                        <div class="member-metric-label">Reviews</div>
+                    </div>
+                </div>
+                <ul class="member-bullets">
+                    <li>{{ member.summary_line1 }}</li>
+                    {% if member.summary_line2 %}
+                    <li>{{ member.summary_line2 }}</li>
+                    {% endif %}
+                </ul>
+                {% if member.topics %}
+                <div class="member-topics">
+                    {% for topic in member.topics %}
+                    <span class="member-topic-chip">{{ topic }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </a>
             {% endfor %}
         </div>

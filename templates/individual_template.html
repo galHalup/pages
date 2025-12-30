@@ -443,72 +443,75 @@
         </header>
 
         <div class="stats-grid">
-            {% if stats.prs_authored > 0 %}
             <a href="{{ github_prs_url }}" target="_blank" class="stat-card">
-                <div class="stat-number">{{ stats.prs_authored }}</div>
-                <div class="stat-label">Pull Requests Authored</div>
+                <div class="stat-number">{{ stats.prs_authored or 0 }}</div>
+                <div class="stat-label">PR Authored</div>
             </a>
-            {% endif %}
-            {% if stats.prs_reviewed > 0 %}
             <a href="{{ github_reviews_url }}" target="_blank" class="stat-card">
-                <div class="stat-number">{{ stats.prs_reviewed }}</div>
-                <div class="stat-label">PR Reviews</div>
+                <div class="stat-number">{{ stats.prs_reviewed or 0 }}</div>
+                <div class="stat-label">PR Reviewed</div>
             </a>
-            {% endif %}
-            {% if stats.slack_messages > 0 %}
-            <a href="https://komodorio.slack.com/search" target="_blank" class="stat-card">
-                <div class="stat-number">{{ stats.slack_messages }}</div>
-                <div class="stat-label">Slack Messages</div>
-            </a>
-            {% endif %}
-            {% if stats.calendar_events > 0 %}
             <a href="https://calendar.google.com" target="_blank" class="stat-card">
-                <div class="stat-number">{{ stats.calendar_events }}</div>
-                <div class="stat-label">Calendar Events</div>
+                <div class="stat-number">{{ stats.calendar_events or 0 }}</div>
+                <div class="stat-label">Cal Events</div>
             </a>
-            {% endif %}
-            {% if stats.projects > 0 %}
-            <a href="#projects" class="stat-card">
-                <div class="stat-number">{{ stats.projects }}</div>
-                <div class="stat-label">Major Projects</div>
+            <a href="{{ github_prs_url }}&created={{ year }}-01-01..{{ year }}-03-31" target="_blank" class="stat-card">
+                <div class="stat-number">{{ q_prs.Q1 or 0 }}</div>
+                <div class="stat-label">Q1 PRs</div>
             </a>
-            {% endif %}
+            <a href="{{ github_prs_url }}&created={{ year }}-04-01..{{ year }}-06-30" target="_blank" class="stat-card">
+                <div class="stat-number">{{ q_prs.Q2 or 0 }}</div>
+                <div class="stat-label">Q2 PRs</div>
+            </a>
+            <a href="{{ github_prs_url }}&created={{ year }}-07-01..{{ year }}-09-30" target="_blank" class="stat-card">
+                <div class="stat-number">{{ q_prs.Q3 or 0 }}</div>
+                <div class="stat-label">Q3 PRs</div>
+            </a>
+            <a href="{{ github_prs_url }}&created={{ year }}-10-01..{{ year }}-12-31" target="_blank" class="stat-card">
+                <div class="stat-number">{{ q_prs.Q4 or 0 }}</div>
+                <div class="stat-label">Q4 PRs</div>
+            </a>
         </div>
 
         <h2 class="section-title" id="projects">Major Projects & Initiatives</h2>
 
         <div class="timeline">
-            {% for quarter_key, quarter_projects in quarters.items() %}
+            {% for quarter_key, topics_dict in quarters.items() %}
             <div class="quarter">
                 <div class="quarter-header">{{ quarter_key }}</div>
-                <div class="project-grid">
-                    {% for project in quarter_projects %}
-                    <div class="project-card" onclick="openModal('{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}')">
-                        <div class="project-header">
-                            <div class="project-icon {{ project.icon_class }}">{{ project.icon_emoji }}</div>
-                            <div>
-                                <div class="project-name">{{ project.name }}</div>
-                                {% if project.start_date and project.end_date %}
-                                <div class="project-dates">
-                                    {{ project.start_date[:7] }} - {{ project.end_date[:7] }}
+                {% for topic, topic_projects in topics_dict.items() %}
+                <div style="margin-bottom: 30px;">
+                    <h3 style="font-size: 1.2rem; color: #00d4ff; margin-bottom: 15px; padding-left: 10px; text-transform: capitalize;">{{ topic }}</h3>
+                    <div class="project-grid">
+                        {% for project in topic_projects[:4] %}
+                        <div class="project-card" onclick="openModal('{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}')">
+                            <div class="project-header">
+                                <div class="project-icon {{ project.icon_class }}">{{ project.icon_emoji }}</div>
+                                <div>
+                                    <div class="project-name">{{ project.name }}</div>
+                                    {% if project.start_date and project.end_date %}
+                                    <div class="project-dates">
+                                        {{ project.start_date[:7] }} - {{ project.end_date[:7] }}
+                                    </div>
+                                    {% elif project.start_date %}
+                                    <div class="project-dates">{{ project.start_date[:7] }}</div>
+                                    {% endif %}
                                 </div>
-                                {% elif project.start_date %}
-                                <div class="project-dates">{{ project.start_date[:7] }}</div>
-                                {% endif %}
+                            </div>
+                            <p class="project-description">{{ project.description }}</p>
+                            <div class="project-tags">
+                                {% for tag in project.tags %}
+                                <span class="tag">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="project-links">
+                                <span class="project-link github">View Links</span>
                             </div>
                         </div>
-                        <p class="project-description">{{ project.description }}</p>
-                        <div class="project-tags">
-                            {% for tag in project.tags %}
-                            <span class="tag">{{ tag }}</span>
-                            {% endfor %}
-                        </div>
-                        <div class="project-links">
-                            <span class="project-link github">View Links</span>
-                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
             {% endfor %}
         </div>
@@ -546,27 +549,29 @@
 
     <script>
         const projectData = {
-            {% for quarter_key, quarter_projects in quarters.items() %}
-                {% for project in quarter_projects %}
-                '{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}': {
-                    title: '{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}',
-                    links: {
-                        {% if project.github_links %}
-                        'GitHub PRs': [
-                            {% for link in project.github_links %}
-                            { text: '{{ link.text|replace("'", "\\'")|replace('"', '\\"') }}', url: '{{ link.url }}', date: '{{ link.date }}' },
-                            {% endfor %}
-                        ],
-                        {% endif %}
-                        {% if project.calendar_links %}
-                        'Calendar Events': [
-                            {% for link in project.calendar_links %}
-                            { text: '{{ link.text|replace("'", "\\'")|replace('"', '\\"') }}', url: '{{ link.url }}', date: '{{ link.date }}' },
-                            {% endfor %}
-                        ],
-                        {% endif %}
-                    }
-                },
+            {% for quarter_key, topics_dict in quarters.items() %}
+                {% for topic, topic_projects in topics_dict.items() %}
+                    {% for project in topic_projects[:4] %}
+                    '{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}': {
+                        title: '{{ project.name|replace("'", "\\'")|replace('"', '\\"') }}',
+                        links: {
+                            {% if project.github_links %}
+                            'GitHub PRs': [
+                                {% for link in project.github_links %}
+                                { text: '{{ link.text|replace("'", "\\'")|replace('"', '\\"') }}', url: '{{ link.url }}', date: '{{ link.date }}' },
+                                {% endfor %}
+                            ],
+                            {% endif %}
+                            {% if project.calendar_links %}
+                            'Calendar Events': [
+                                {% for link in project.calendar_links %}
+                                { text: '{{ link.text|replace("'", "\\'")|replace('"', '\\"') }}', url: '{{ link.url }}', date: '{{ link.date }}' },
+                                {% endfor %}
+                            ],
+                            {% endif %}
+                        }
+                    },
+                    {% endfor %}
                 {% endfor %}
             {% endfor %}
         };

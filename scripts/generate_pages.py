@@ -46,31 +46,30 @@ class PageGenerator:
     
     def _generate_summary(self, projects: Dict[str, Dict], stats: Dict) -> tuple:
         """Generate 2-line summary for team member card."""
-        if not projects:
-            return "Active contributor throughout the year.", "Focused on team collaboration and code quality."
+        bullets = []
+        topics = set()
         
-        # Get top projects
-        sorted_projects = sorted(projects.values(), 
-                                key=lambda p: len(p.get('prs', [])) + len(p.get('events', [])), 
-                                reverse=True)
-        top_projects = sorted_projects[:3]
+        # Extract topics from projects
+        for project in projects.values():
+            tags = project.get('tags', [])
+            topics.update(tags)
+            category = project.get('category', '')
+            if category:
+                topics.add(category)
         
-        project_names = [p['name'] for p in top_projects]
+        # Generate bullets
+        if stats.get('prs_authored', 0) > 0 or stats.get('prs_reviewed', 0) > 0:
+            bullets.append(f"Authored {stats.get('prs_authored', 0)} PRs and reviewed {stats.get('prs_reviewed', 0)} in {2025}")
         
-        if len(project_names) >= 2:
-            line1 = f"Led {project_names[0]} and contributed to {project_names[1]}."
-            if len(project_names) >= 3:
-                line2 = f"Also worked on {project_names[2]} and {stats.get('prs_authored', 0)}+ other contributions."
-            else:
-                line2 = f"Made {stats.get('prs_authored', 0)}+ contributions across multiple initiatives."
-        elif len(project_names) == 1:
-            line1 = f"Led {project_names[0]} initiative."
-            line2 = f"Made {stats.get('prs_authored', 0)}+ contributions throughout the year."
-        else:
-            line1 = f"Active contributor with {stats.get('prs_authored', 0)}+ PRs."
-            line2 = "Focused on code quality and team collaboration."
+        if stats.get('calendar_events', 0) > 0:
+            # Get top topic from calendar events
+            top_topic = list(topics)[0] if topics else "Meetings"
+            bullets.append(f"Attended {stats.get('calendar_events', 0)} meetings focusing on {top_topic}")
         
-        return line1, line2
+        line1 = bullets[0] if bullets else "Active contributor throughout the year."
+        line2 = bullets[1] if len(bullets) > 1 else "Focused on team collaboration and code quality."
+        
+        return line1, line2, list(topics)[:3]  # Return top 3 topics
     
     def generate_individual_page(self, member: Dict, data: Dict, projects: Dict[str, Dict], year: int):
         """Generate individual team member page."""
@@ -116,6 +115,50 @@ class PageGenerator:
         # Sort months
         monthly_prs = dict(sorted(monthly_prs.items()))
         
+        # Calculate Q1-Q4 PRs
+        q_prs = {'Q1': 0, 'Q2': 0, 'Q3': 0, 'Q4': 0}
+        for pr in data.get('github', {}).get('prs_authored', []):
+            if pr.get('created_at'):
+                try:
+                    dt = datetime.fromisoformat(pr['created_at'].replace('Z', '+00:00'))
+                    q_num = (dt.month - 1) // 3 + 1
+                    q_key = f"Q{q_num}"
+                    if q_key in q_prs:
+                        q_prs[q_key] += 1
+                except:
+                    pass
+        
+        # Group projects by topic and select top 4 per quarter
+        quarters_by_topic = {}
+        for quarter_key, quarter_projects in quarters.items():
+            if not quarter_projects:
+                quarters_by_topic[quarter_key] = {}
+                continue
+                
+            # Group by category/topic
+            by_topic = {}
+            for project in quarter_projects:
+                topic = project.get('category', 'feature')
+                if topic not in by_topic:
+                    by_topic[topic] = []
+                by_topic[topic].append(project)
+            
+            # Select top 4 projects per topic, then top 4 topics
+            top_projects_by_topic = {}
+            for topic, topic_projects in by_topic.items():
+                # Sort by number of PRs + events
+                sorted_topic = sorted(topic_projects, 
+                                    key=lambda p: len(p.get('prs', [])) + len(p.get('events', [])), 
+                                    reverse=True)
+                top_projects_by_topic[topic] = sorted_topic[:4]
+            
+            # Get top 4 topics
+            sorted_topics = sorted(top_projects_by_topic.items(), 
+                                 key=lambda x: sum(len(p.get('prs', [])) + len(p.get('events', [])) 
+                                                  for p in x[1]), 
+                                 reverse=True)[:4]
+            quarters_by_topic[quarter_key] = dict(sorted_topics)
+        
         # Render template
         html = template.render(
             name=member['name'],
@@ -123,7 +166,8 @@ class PageGenerator:
             stats=stats,
             github_prs_url=github_urls.get('prs', '#'),
             github_reviews_url=github_urls.get('reviews', '#'),
-            quarters=quarters,
+            quarters=quarters_by_topic,  # Use grouped by topic
+            q_prs=q_prs,
             monthly_prs=monthly_prs,
             max_prs=max_prs,
             generation_date=datetime.now().strftime('%B %Y')

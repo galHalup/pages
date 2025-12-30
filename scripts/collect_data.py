@@ -181,17 +181,24 @@ def main():
             'projects': len(projects)
         }
         
-        # Generate summary
-        line1, line2 = generator._generate_summary(projects, stats)
+        # Generate summary with topics
+        result = generator._generate_summary(projects, stats)
+        if len(result) == 3:
+            line1, line2, topics = result
+        else:
+            line1, line2 = result
+            topics = []
         
         # Generate individual page
         filename = generator.generate_individual_page(member, data, projects, config['year'])
         
         members_for_team_page.append({
             'name': member['name'],
+            'email': member.get('slack') or member.get('github', ''),
             'filename': f"{filename}.html",
             'summary_line1': line1,
             'summary_line2': line2,
+            'topics': topics,
             'stats': stats
         })
     
