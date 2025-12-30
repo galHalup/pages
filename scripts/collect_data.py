@@ -126,7 +126,7 @@ def main():
     data_dir.mkdir(parents=True, exist_ok=True)
     
     templates_dir = base_dir / "templates"
-    output_dir = base_dir / "generated"
+    output_dir = base_dir / "docs"  # GitHub Pages serves from /docs folder
     
     # Collect data for each member
     all_members_data = []
