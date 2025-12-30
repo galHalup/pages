@@ -1,20 +1,20 @@
 # Troubleshooting Team - 2025 Year in Review
 
 ## 📊 Team Dashboard
-[View Team Dashboard](https://galhalup.github.io/pages/team-2025-year-in-review.html)
+[View Team Dashboard](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/team-2025-year-in-review.html)
 
 The team dashboard provides an overview of all team members with key statistics and focus areas. Click on any team member card to view their detailed individual report.
 
 ## 👥 Individual Reports
 
-- [Gal Halup](https://galhalup.github.io/pages/gal-halup-2025.html) - 535 PRs, 740 reviews, 1,471 events
-- [Ronen Lapushner](https://galhalup.github.io/pages/ronen-lapushner-2025.html) - 229 PRs, 638 reviews, 590 events
-- [Michael Dubinsky](https://galhalup.github.io/pages/michael-dubinsky-2025.html) - 191 PRs, 236 reviews, 572 events
-- [Chen Kubani](https://galhalup.github.io/pages/chen-kubani-2025.html) - Product Manager, 2,161 events
-- [Noy Simon](https://galhalup.github.io/pages/noy-simon-2025.html) - 234 PRs, 311 reviews, 1,286 events
-- [Binyamin Gal](https://galhalup.github.io/pages/binyamin-gal-2025.html) - 613 PRs, 652 reviews, 730 events
-- [Ranny Eli](https://galhalup.github.io/pages/ranny-eli-2025.html) - 181 PRs, 354 reviews
-- [Shay Cohen](https://galhalup.github.io/pages/shay-cohen-2025.html) - 307 PRs, 183 reviews
+- [Gal Halup](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/gal-halup-2025.html) - 535 PRs, 740 reviews, 1,471 events
+- [Ronen Lapushner](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/ronen-lapushner-2025.html) - 229 PRs, 638 reviews, 590 events
+- [Michael Dubinsky](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/michael-dubinsky-2025.html) - 191 PRs, 236 reviews, 572 events
+- [Chen Kubani](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/chen-kubani-2025.html) - Product Manager, 2,161 events
+- [Noy Simon](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/noy-simon-2025.html) - 234 PRs, 311 reviews, 1,286 events
+- [Binyamin Gal](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/binyamin-gal-2025.html) - 613 PRs, 652 reviews, 730 events
+- [Ranny Eli](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/ranny-eli-2025.html) - 181 PRs, 354 reviews
+- [Shay Cohen](https://galhalup.github.io/pages/troubleshooting-team-2025-summary/shay-cohen-2025.html) - 307 PRs, 183 reviews
 
 ## 📈 Team Statistics
 
@@ -39,9 +39,9 @@ Each individual report includes:
 
 ## 🚀 Access
 
-All reports are hosted on GitHub Pages and can be accessed directly:
+All reports are hosted on GitHub Pages:
 - **Main URL**: https://galhalup.github.io/pages/
-- **Team Dashboard**: https://galhalup.github.io/pages/team-2025-year-in-review.html
+- **Team Dashboard**: https://galhalup.github.io/pages/troubleshooting-team-2025-summary/team-2025-year-in-review.html
 
 ---
 
