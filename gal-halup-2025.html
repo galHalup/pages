@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gal Halup - 2025 Year in Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #94a3b8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.08);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 50px 0 30px;
+            padding-left: 20px;
+            border-left: 4px solid #7c3aed;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00d4ff, #7c3aed, #f472b6);
+        }
+
+        .quarter {
+            margin-bottom: 50px;
+        }
+
+        .quarter-header {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .quarter-header::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #00d4ff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .icon-infra { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .icon-feature { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .icon-perf { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .icon-security { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .icon-ai { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+        .icon-cost { background: linear-gradient(135deg, #eab308, #ca8a04); }
+        .icon-team { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .project-dates {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .project-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+        }
+
+        .monthly-activity {
+            margin-top: 60px;
+        }
+
+        .activity-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 200px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+        }
+
+        .month-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .month-bar:hover {
+            transform: scale(1.05);
+        }
+
+        .month-bar:hover .bar {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, #00d4ff, #7c3aed);
+            border-radius: 8px 8px 0 0;
+            min-height: 10px;
+            transition: all 0.3s;
+        }
+
+        .month-label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            color: #64748b;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .close-btn {
+            color: #94a3b8;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-link-group {
+            margin-bottom: 20px;
+        }
+
+        .modal-link-group h4 {
+            color: #94a3b8;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .modal-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .modal-link:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .modal-link-icon {
+            font-size: 1.2rem;
+        }
+
+        .modal-link-text {
+            flex: 1;
+        }
+
+        .modal-link-date {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gal Halup</h1>
+            <p class="subtitle">2025 Year in Review @ Komodor</p>
+        </header>
+
+        <div class="stats-grid">
+            <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-01-01..2025-12-31" target="_blank" class="stat-card">
+                <div class="stat-number">535</div>
+                <div class="stat-label">Pull Requests Authored</div>
+            </a>
+            <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+reviewed-by%3AgalHalup+created%3A2025-01-01..2025-12-31" target="_blank" class="stat-card">
+                <div class="stat-number">740</div>
+                <div class="stat-label">PR Reviews</div>
+            </a>
+            <div class="stat-card">
+                <div class="stat-number">1,471</div>
+                <div class="stat-label">Calendar Events</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">49</div>
+                <div class="stat-label">Candidate Interviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Major Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">138</div>
+                <div class="stat-label">Q1 PRs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">123</div>
+                <div class="stat-label">Q2 PRs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">128</div>
+                <div class="stat-label">Q3 PRs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">146</div>
+                <div class="stat-label">Q4 PRs</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="projects">Major Projects & Initiatives</h2>
+
+        <div class="timeline">
+            <!-- Q1 2025 -->
+            <div class="quarter">
+                <div class="quarter-header">Q1 2025 (January - March)</div>
+                <div class="project-grid">
+                    <div class="project-card" onclick="openModal('rbac')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-security">🔐</div>
+                            <div>
+                                <div class="project-name">RBAC V2 & Workspaces</div>
+                                <div class="project-dates">Jan - Mar 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Led implementation of Role-Based Access Control V2 with workspace policies.
+                            Key meetings included RBAC UX reviews, policy structure design, workspace implementation,
+                            and rollout planning with 56 RBAC-related meetings throughout the year.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Security</span>
+                            <span class="tag">Authorization</span>
+                            <span class="tag">Workspaces</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openModal('helm')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-feature">⚓</div>
+                            <div>
+                                <div class="project-name">Helm Drift Detection Phase 2</div>
+                                <div class="project-dates">Jan - Mar 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Kickoff and development of Helm comparison capabilities for drift detection.
+                            Cross-cluster Helm drift analysis with 24 Helm/GitOps related meetings.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Helm</span>
+                            <span class="tag">GitOps</span>
+                            <span class="tag">Drift Detection</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openModal('terraform')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-infra">🏗️</div>
+                            <div>
+                                <div class="project-name">Terraform Provider Development</div>
+                                <div class="project-dates">Jan - Feb 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Enhanced Komodor Terraform provider with documentation improvements for komodor_monitor,
+                            fixed GetMonitors API response handling, and improved configuration examples.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">IaC</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Developer Tools</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 2025 -->
+            <div class="quarter">
+                <div class="quarter-header">Q2 2025 (April - June)</div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-security">🔑</div>
+                            <div>
+                                <div class="project-name">Workspace & Policy Framework</div>
+                                <div class="project-dates">Apr - Jun 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Added Komodor workspace resource and policy_v2 to Terraform provider. Implemented
+                            resources and data sources for managing workspaces with cluster, namespace, and
+                            selector-based scopes. Version bump to 2.1.0.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">RBAC</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Infrastructure</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openModal('cost')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-cost">💰</div>
+                            <div>
+                                <div class="project-name">Cost Platform Development</div>
+                                <div class="project-dates">Apr - Jun 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Major Cost V2 initiative with 41 related meetings including unevictable pods detection,
+                            HPA recommendations, right-sizing policies, and UI design reviews. GPU inventory
+                            implementation for cost tracking.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Cost Optimization</span>
+                            <span class="tag">FinOps</span>
+                            <span class="tag">HPA</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openModal('agent')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-infra">📡</div>
+                            <div>
+                                <div class="project-name">Agent Metrics Enhancements</div>
+                                <div class="project-dates">Apr - Jun 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Added quiet mode configuration, KOMOKW_API_KEY environment variable support for real
+                            node pricing, and command configuration for metrics containers. Fixed Windows daemon
+                            hostNetwork compatibility issues.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Agent</span>
+                            <span class="tag">Metrics</span>
+                            <span class="tag">Helm Charts</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-ai">🤖</div>
+                            <div>
+                                <div class="project-name">LLMagination Hackathon</div>
+                                <div class="project-dates">May 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Participated in company AI hackathon exploring LLM-powered Kubernetes troubleshooting.
+                            Part of "the-metrics-collectors" team focusing on innovative AI solutions.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Hackathon</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 2025 -->
+            <div class="quarter">
+                <div class="quarter-header">Q3 2025 (July - September)</div>
+                <div class="project-grid">
+                    <div class="project-card" onclick="openModal('klaudia')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-ai">🧠</div>
+                            <div>
+                                <div class="project-name">Klaudia AI Platform</div>
+                                <div class="project-dates">Jul - Sep 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Major focus with 373 AI/Klaudia meetings throughout 2025. Klaudia remediation kickoff,
+                            knowledge base development, ArgoCD integration, and LLM-powered troubleshooting
+                            capabilities. Auto-remediation and guardrails implementation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Auto-remediation</span>
+                            <span class="tag">Knowledge Base</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-feature">☁️</div>
+                            <div>
+                                <div class="project-name">Cloud Integrations - Fargate</div>
+                                <div class="project-dates">Jul 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Initial PRD review for AWS Fargate integration, expanding cloud platform support
+                            capabilities beyond traditional Kubernetes clusters.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">AWS</span>
+                            <span class="tag">Fargate</span>
+                            <span class="tag">Cloud</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="openModal('metrics')" style="cursor: pointer;">
+                        <div class="project-header">
+                            <div class="project-icon icon-perf">⚡</div>
+                            <div>
+                                <div class="project-name">Metrics Infrastructure</div>
+                                <div class="project-dates">Jul - Sep 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Defined internal ingestion flows using metrics-collector, ArgoCD integration requirements,
+                            and resource info sync. Metrics sample rate optimization and reliability integration work.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Metrics</span>
+                            <span class="tag">Performance</span>
+                            <span class="tag">ArgoCD</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-infra">📦</div>
+                            <div>
+                                <div class="project-name">Helm Chart Updates</div>
+                                <div class="project-dates">Sep - Oct 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Updated Telegraf version to 2.0.11 for improved metrics collection performance and
+                            security. Regular maintenance and version management of agent components.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Telegraf</span>
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Maintenance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 2025 -->
+            <div class="quarter">
+                <div class="quarter-header">Q4 2025 (October - December)</div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-cost">📈</div>
+                            <div>
+                                <div class="project-name">Timestream Alternatives POC</div>
+                                <div class="project-dates">Nov - Dec 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Led POC for Timestream alternatives including TimescaleDB and ClickHouse.
+                            Kickoff meeting on Nov 30th to explore cost-effective metrics storage solutions
+                            with 13 metrics-related meetings throughout the year.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">TimescaleDB</span>
+                            <span class="tag">ClickHouse</span>
+                            <span class="tag">Cost Reduction</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-feature">🔧</div>
+                            <div>
+                                <div class="project-name">Addons Framework</div>
+                                <div class="project-dates">Oct - Dec 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Addons project structure design and testing on labs. Integration planning for
+                            various Kubernetes addons and extensions to enhance platform capabilities.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Addons</span>
+                            <span class="tag">Framework</span>
+                            <span class="tag">Extensions</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon icon-feature">⎈</div>
+                            <div>
+                                <div class="project-name">Helm Actions & Behavior</div>
+                                <div class="project-dates">Dec 2025</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Defined Helm actions needs and made key decisions on Helm behavior patterns.
+                            Continued evolution of drift detection and GitOps capabilities.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Helm</span>
+                            <span class="tag">Actions</span>
+                            <span class="tag">GitOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Activity -->
+        <div class="monthly-activity">
+            <h2 class="section-title">Monthly PR Activity</h2>
+            <div class="activity-bars">
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-01-01..2025-01-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 90px;" title="Jan: 45 PRs"></div>
+                    <span class="month-label">Jan</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-02-01..2025-02-28" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 90px;" title="Feb: 45 PRs"></div>
+                    <span class="month-label">Feb</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-03-01..2025-03-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 96px;" title="Mar: 48 PRs"></div>
+                    <span class="month-label">Mar</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-04-01..2025-04-30" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 102px;" title="Apr: 51 PRs"></div>
+                    <span class="month-label">Apr</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-05-01..2025-05-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 74px;" title="May: 37 PRs"></div>
+                    <span class="month-label">May</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-06-01..2025-06-30" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 70px;" title="Jun: 35 PRs"></div>
+                    <span class="month-label">Jun</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-07-01..2025-07-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 106px;" title="Jul: 53 PRs"></div>
+                    <span class="month-label">Jul</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-08-01..2025-08-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 82px;" title="Aug: 41 PRs"></div>
+                    <span class="month-label">Aug</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-09-01..2025-09-30" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 68px;" title="Sep: 34 PRs"></div>
+                    <span class="month-label">Sep</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-10-01..2025-10-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 74px;" title="Oct: 37 PRs"></div>
+                    <span class="month-label">Oct</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-11-01..2025-11-30" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 70px;" title="Nov: 35 PRs"></div>
+                    <span class="month-label">Nov</span>
+                </a>
+                <a href="https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025-12-01..2025-12-31" target="_blank" class="month-bar">
+                    <div class="bar" style="height: 148px;" title="Dec: 74 PRs"></div>
+                    <span class="month-label">Dec</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Monthly Meeting Activity -->
+        <div class="monthly-activity">
+            <h2 class="section-title">Monthly Meeting Activity</h2>
+            <div class="activity-bars">
+                <div class="month-bar">
+                    <div class="bar" style="height: 143px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Jan: 143 meetings"></div>
+                    <span class="month-label">Jan</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 92px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Feb: 92 meetings"></div>
+                    <span class="month-label">Feb</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 109px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Mar: 109 meetings"></div>
+                    <span class="month-label">Mar</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 102px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Apr: 102 meetings"></div>
+                    <span class="month-label">Apr</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 106px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="May: 106 meetings"></div>
+                    <span class="month-label">May</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 102px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Jun: 102 meetings"></div>
+                    <span class="month-label">Jun</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 133px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Jul: 133 meetings"></div>
+                    <span class="month-label">Jul</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 127px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Aug: 127 meetings"></div>
+                    <span class="month-label">Aug</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 135px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Sep: 135 meetings"></div>
+                    <span class="month-label">Sep</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 120px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Oct: 120 meetings"></div>
+                    <span class="month-label">Oct</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 152px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Nov: 152 meetings"></div>
+                    <span class="month-label">Nov</span>
+                </div>
+                <div class="month-bar">
+                    <div class="bar" style="height: 150px; background: linear-gradient(180deg, #f472b6, #a855f7);" title="Dec: 150 meetings"></div>
+                    <span class="month-label">Dec</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hiring & Interviews -->
+        <div style="margin-top: 60px; background: rgba(255,255,255,0.05); border-radius: 16px; padding: 30px;">
+            <h2 class="section-title" style="margin-top: 0; padding-left: 0; border-left: none;">Hiring & Team Building</h2>
+            <p style="color: #94a3b8; margin-bottom: 20px;">Conducted 49 candidate interviews throughout 2025, helping grow the engineering team.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 20px;">
+                <div onclick="openModal('hiring')" style="background: rgba(6, 182, 212, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #06b6d4; cursor: pointer;">
+                    <strong>Throughout 2025:</strong> Participated in 49 technical interviews across various backend and platform engineering roles
+                </div>
+                <div style="background: rgba(6, 182, 212, 0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #06b6d4;">
+                    <strong>Focus Areas:</strong> Senior Backend Engineers, Platform Engineers, and Team Lead candidates
+                </div>
+            </div>
+        </div>
+
+        <!-- Recurring Responsibilities -->
+        <div style="margin-top: 60px;">
+            <h2 class="section-title">Recurring Responsibilities</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon icon-ai">🤖</div>
+                        <div>
+                            <div class="project-name">AI/Klaudia Leadership</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Led 373 AI/Klaudia related meetings including remediation development, knowledge base
+                        implementation, ArgoCD integration, and LLM-powered troubleshooting capabilities.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon icon-team">👥</div>
+                        <div>
+                            <div class="project-name">Team Collaboration</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Daily standups, sprint planning, and retrospectives (62 agile ceremonies).
+                        Regular 1:1s and architecture onboarding sessions (4 knowledge sharing events).
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon icon-infra">📋</div>
+                        <div>
+                            <div class="project-name">Design & Planning</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        24 design and planning meetings including PRD reviews, Q2 planning, technical debt
+                        reviews, and architecture decisions.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon icon-security">🛡️</div>
+                        <div>
+                            <div class="project-name">Security & RBAC</div>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        56 RBAC and security meetings covering workspace implementations, policy frameworks,
+                        and authorization improvements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.2rem; color: #7c3aed;">An incredible year of building, leading, and growing!</p>
+            <p class="footer-note">Data sourced from GitHub (535 PRs authored, 740 PRs reviewed) and Google Calendar (1,471 events) | Generated December 2025</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Project Links</h3>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="modalBody" class="modal-links"></div>
+        </div>
+    </div>
+
+    <script>
+        const projectData = {
+            'klaudia': {
+                title: 'Klaudia AI Platform',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'View all 535 PRs on GitHub', url: 'https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+created%3A2025', date: '' }
+                    ],
+                    'Calendar Events': [
+                        { text: 'Klaudia-reliability integration', url: '#', date: '2025-04-17' },
+                        { text: 'LLMagination Hackathon kickoff', url: '#', date: '2025-03-30' },
+                        { text: 'Klaudia knowledge base kickoff', url: '#', date: '2025-05-20' },
+                        { text: 'Cascading issues in availability drawer', url: '#', date: '2025-02-17' },
+                        { text: 'LLM-Powered Kubernetes Troubleshooting: Deep Dive', url: '#', date: '2025-02-25' },
+                        { text: 'Kickoff: Klaudia remediation', url: '#', date: '2025-06-26' },
+                        { text: 'Klaudia guardrails + auto remediation', url: '#', date: '2025-07-29' },
+                        { text: 'Klaudia Monitoring', url: '#', date: '2025-09-16' }
+                    ],
+                    'Stats': [
+                        { text: '373 AI/Klaudia meetings in 2025', url: '#', date: '' }
+                    ]
+                }
+            },
+            'rbac': {
+                title: 'RBAC V2 & Workspaces',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'View RBAC PRs on GitHub', url: 'https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+rbac+created%3A2025', date: '' }
+                    ],
+                    'Calendar Events': [
+                        { text: 'RBAC + WS - rollout plan', url: '#', date: '2025-03-23' },
+                        { text: 'RBAC & WS weekly status', url: '#', date: '2025-03-11' },
+                        { text: 'Workspace as policy (technical)', url: '#', date: '2025-01-09' },
+                        { text: 'Autogenerated workspaces ideation', url: '#', date: '2025-06-08' },
+                        { text: 'New policy type and workspaces', url: '#', date: '2025-01-06' }
+                    ],
+                    'Stats': [
+                        { text: '56 RBAC/Security meetings in 2025', url: '#', date: '' }
+                    ]
+                }
+            },
+            'cost': {
+                title: 'Cost V2 Platform',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'View Cost PRs on GitHub', url: 'https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+cost+created%3A2025', date: '' },
+                        { text: 'Gpus inventory saving shared model', url: 'https://github.com/komodorio/mono/pull/19983', date: '2025-05-15' }
+                    ],
+                    'Calendar Events': [
+                        { text: 'Cost Efforts Overview', url: '#', date: '2025-06-10' },
+                        { text: 'Cost - UI design review', url: '#', date: '2025-05-14' },
+                        { text: 'Cost PRDs review', url: '#', date: '2025-06-08' },
+                        { text: 'Cost sync (AORs)', url: '#', date: '2025-05-06' },
+                        { text: 'Reviewing Real costs HLDs', url: '#', date: '2025-05-13' }
+                    ],
+                    'Stats': [
+                        { text: '41 Cost Platform meetings in 2025', url: '#', date: '' }
+                    ]
+                }
+            },
+            'helm': {
+                title: 'Helm Drift Detection & Actions',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'View Helm PRs on GitHub', url: 'https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+helm+created%3A2025', date: '' },
+                        { text: 'ArgoCD Cluster resource info handler', url: '#', date: '2025-09-29' },
+                        { text: 'Better context for helm collector', url: '#', date: '2025-09-29' }
+                    ],
+                    'Calendar Events': [
+                        { text: 'Helm needs for drift', url: '#', date: '2025-01-08' },
+                        { text: 'Drift phase 2 (Helm comparison) kickoff', url: '#', date: '2025-01-15' },
+                        { text: 'Helm actions needs', url: '#', date: '2025-12-24' },
+                        { text: 'Helm behavior decisions', url: '#', date: '2025-12-22' }
+                    ],
+                    'Stats': [
+                        { text: '24 Helm/GitOps meetings in 2025', url: '#', date: '' }
+                    ]
+                }
+            },
+            'metrics': {
+                title: 'Metrics & Timestream Alternatives',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'View Metrics PRs on GitHub', url: 'https://github.com/komodorio/mono/pulls?q=is%3Apr+author%3AgalHalup+metric+created%3A2025', date: '' },
+                        { text: 'Timestream Alternatives POC - TimescaleDB', url: '#', date: '2025-11-30' },
+                        { text: 'Add TimescaleDB support to pgbouncer', url: '#', date: '2025-12-05' }
+                    ],
+                    'Calendar Events': [
+                        { text: 'Metrics RBAC WS', url: '#', date: '2025-01-08' },
+                        { text: 'Internal ingestion flow using metrics-collector', url: '#', date: '2025-03-10' },
+                        { text: 'The metrics collectors - define flows', url: '#', date: '2025-05-20' },
+                        { text: 'Timestream Alternatives POC - Kickoff', url: '#', date: '2025-11-30' }
+                    ],
+                    'Stats': [
+                        { text: '13 Metrics Infrastructure meetings', url: '#', date: '' }
+                    ]
+                }
+            },
+            'terraform': {
+                title: 'Terraform Provider',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'Add Komodor workspace resource and data source', url: 'https://github.com/komodorio/terraform-provider-komodor/pull/24', date: '2025-04-26' },
+                        { text: 'Update GetMonitors function', url: 'https://github.com/komodorio/terraform-provider-komodor/pull/19', date: '2025-02-02' },
+                        { text: 'Update komodor_monitor documentation', url: 'https://github.com/komodorio/terraform-provider-komodor/pull/18', date: '2025-01-27' },
+                        { text: 'Enhance komodor_monitor documentation', url: 'https://github.com/komodorio/terraform-provider-komodor/pull/17', date: '2025-01-12' }
+                    ]
+                }
+            },
+            'agent': {
+                title: 'Agent & Metrics Enhancements',
+                links: {
+                    'GitHub PRs': [
+                        { text: 'Add quiet mode configuration', url: 'https://github.com/komodorio/helm-charts/pull/365', date: '2025-04-01' },
+                        { text: 'Add KOMOKW_API_KEY environment variable', url: 'https://github.com/komodorio/helm-charts/pull/377', date: '2025-05-29' },
+                        { text: 'Fix hostNetwork parameter for Windows', url: 'https://github.com/komodorio/helm-charts/pull/363', date: '2025-03-20' },
+                        { text: 'Update telegraf version to 2.0.11', url: 'https://github.com/komodorio/helm-charts/pull/442', date: '2025-10-09' }
+                    ]
+                }
+            },
+            'hiring': {
+                title: 'Hiring & Interviews',
+                links: {
+                    'Stats': [
+                        { text: '49 candidate interviews conducted in 2025', url: '#', date: '' },
+                        { text: 'Senior Backend Engineers', url: '#', date: '' },
+                        { text: 'Platform Engineers', url: '#', date: '' },
+                        { text: 'Team Lead candidates', url: '#', date: '' }
+                    ]
+                }
+            }
+        };
+
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            const project = projectData[projectId];
+            if (!project) return;
+
+            modalTitle.textContent = project.title;
+
+            let html = '';
+            for (const [category, links] of Object.entries(project.links)) {
+                const icon = category.includes('GitHub') ? '🔗' :
+                            category.includes('Calendar') ? '📅' :
+                            category.includes('Stats') ? '📊' : '🔗';
+
+                html += `<div class="modal-link-group">
+                    <h4>${icon} ${category}</h4>
+                    <div class="modal-link-list">`;
+
+                for (const link of links) {
+                    html += `<a href="${link.url}" target="_blank" class="modal-link">
+                        <span class="modal-link-text">${link.text}</span>
+                        ${link.date ? `<span class="modal-link-date">${link.date}</span>` : ''}
+                    </a>`;
+                }
+
+                html += `</div></div>`;
+            }
+
+            modalBody.innerHTML = html;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
