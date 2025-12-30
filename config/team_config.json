@@ -1,0 +1,84 @@
+{
+  "year": 2025,
+  "team_name": "Troubleshooting Team",
+  "github_pat": "",
+  "slack_token": "",
+  "calendar_folder": "/Users/galh/Downloads/calanders",
+  "members": [
+    {
+      "name": "Gal Halup",
+      "github": "galHalup",
+      "slack": "gal@komodor.io",
+      "calendar_file": "gal@komodor.io.ics",
+      "has_calendar": true
+    },
+    {
+      "name": "Ronen",
+      "github": "ronen25",
+      "slack": "ronen@komodor.io",
+      "calendar_file": "ronen@komodor.io 2.ics",
+      "has_calendar": true
+    },
+    {
+      "name": "Michael",
+      "github": "michaeldeift",
+      "slack": "michaeld@komodor.io",
+      "calendar_file": "michaeld@komodor.io.ical.zip",
+      "has_calendar": true
+    },
+    {
+      "name": "Chen Kubani",
+      "github": null,
+      "slack": "chen.kubani@komodor.io",
+      "calendar_file": "chen.kubani@komodor.io.ics",
+      "has_calendar": true,
+      "is_product_manager": true
+    },
+    {
+      "name": "Noy",
+      "github": "Noy-Simon",
+      "slack": "noya@komodor.io",
+      "calendar_file": "noya@komodor.io.ics",
+      "has_calendar": true
+    },
+    {
+      "name": "Binyamin",
+      "github": "binygal",
+      "slack": null,
+      "calendar_file": "binyamin@komodor.io.ics",
+      "has_calendar": true
+    },
+    {
+      "name": "Ranny",
+      "github": "rannyeli",
+      "slack": null,
+      "calendar_file": null,
+      "has_calendar": false
+    },
+    {
+      "name": "Shay",
+      "github": "shay-cohen",
+      "slack": null,
+      "calendar_file": null,
+      "has_calendar": false
+    }
+  ],
+  "repositories": [
+    "komodorio/mono",
+    "komodorio/infra",
+    "komodorio/komodor-agent",
+    "komodorio/helm-charts",
+    "komodorio/monitoring",
+    "komodorio/telegraf-plugins"
+  ],
+  "project_keywords": {
+    "infrastructure": ["infra", "infrastructure", "deployment", "kubernetes", "k8s", "cluster", "database", "migration"],
+    "feature": ["feature", "new", "add", "implement", "support"],
+    "performance": ["performance", "optimize", "optimization", "speed", "latency", "load", "perf"],
+    "security": ["security", "rbac", "auth", "authorization", "permission", "access"],
+    "ai": ["ai", "klaudia", "remediation", "auto", "ml", "machine learning"],
+    "cost": ["cost", "finops", "right-sizing", "hpa", "nodepool", "unevictable"],
+    "team": ["interview", "hiring", "onboarding", "mentor", "1:1", "standup"]
+  }
+}
+

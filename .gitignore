@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Data files
+data/raw/*.json
+!data/raw/.gitkeep
+
+# Generated files (optional - uncomment if you don't want to commit generated HTML)
+# generated/*.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (should not be in repo, but just in case)
+config/*_secrets.json
+*.key
+*.pem
+
+# Logs
+*.log
+
